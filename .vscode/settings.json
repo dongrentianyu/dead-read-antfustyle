@@ -5,5 +5,17 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "astro.content-intellisense": true
+  "astro.content-intellisense": true,
+  "cSpell.words": [
+    "Antfu",
+    "antfustyle",
+    "Attributify",
+    "bsky",
+    "giscus",
+    "Navs",
+    "pinterest",
+    "unjs",
+    "unocss",
+    "withastro"
+  ]
 }

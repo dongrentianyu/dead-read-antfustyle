@@ -9,7 +9,7 @@ import {
 } from 'unocss'
 
 import { UI } from './src/config'
-import projecstData from './src/content/projects/data.json'
+import projectsData from './src/content/projects/data.json'
 
 import type {
   IconNavItem,
@@ -34,7 +34,7 @@ const socialIcons = socialLinks
   )
   .map((item) => (item as IconSocialItem | ResponsiveSocialItem).icon)
 
-const projectIcons = projecstData.map((item) => item.icon)
+const projectIcons = projectsData.map((item) => item.icon)
 
 const githubVersionColor: Record<string, string> = {
   major: 'bg-rose/15 text-rose-7 dark:text-rose-3',

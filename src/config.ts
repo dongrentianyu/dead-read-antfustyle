@@ -3,12 +3,12 @@ import type { Site, Ui, Features } from './types'
 export const SITE: Site = {
   website: 'https://astro-antfustyle-theme.vercel.app/',
   base: '/',
-  title: 'Astro AntfuStyle Theme',
+  title: 'Dead Paper , Dead Read',
   description:
-    'A customizable, feature-rich Astro theme for blog and portfolio creation',
-  author: 'Stephanie Lin',
-  lang: 'en',
-  ogLocale: 'en_US',
+    'paper is dead , read is dead , the people is coming and AI won. ',
+  author: '马不前',
+  lang: 'zh-Hans',
+  ogLocale: 'zh_CN',
   imageDomains: ['cdn.bsky.app', 'images.unsplash.com'],
 }
 
@@ -57,22 +57,10 @@ export const UI: Ui = {
   ],
   socialLinks: [
     {
-      link: 'https://github.com/lin-stephanie/astro-antfustyle-theme',
-      title: 'AntfuStyle on Github',
+      link: 'https://github.com/dongrentianyu/dead-read-antfustyle',
+      title: 'Code on Github',
       displayMode: 'alwaysIcon',
       icon: 'i-uil-github-alt',
-    },
-    {
-      link: 'https://x.com/astrodotbuild',
-      title: 'Astro on Twitter',
-      displayMode: 'alwaysIcon',
-      icon: 'i-ri-twitter-x-fill',
-    },
-    {
-      link: 'https://bsky.app/profile/astro.build',
-      title: 'Astro on Bluesky',
-      displayMode: 'alwaysIcon',
-      icon: 'i-meteor-icons-bluesky',
     },
   ],
   navBarLayout: {
@@ -146,7 +134,7 @@ export const FEATURES: Features = {
     },
   ],
   share: [
-    true,
+    false,
     {
       twitter: [true, '@ste7lin'],
       bluesky: [true, '@ste7lin.bsky.social'],
@@ -160,7 +148,7 @@ export const FEATURES: Features = {
     },
   ],
   giscus: [
-    true,
+    false,
     {
       'data-repo': 'lin-stephanie/astro-antfustyle-theme',
       'data-repo-id': 'R_kgDOLylKbA',

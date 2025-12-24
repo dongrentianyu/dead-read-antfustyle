@@ -1,3 +1,5 @@
+## 你好，新的astro主题
+
 Glad you made it here! This is a flexible and feature-rich :link[Astro 5]{id=withastro/astro} theme for developers and creators, inspired by the minimalist style of :link[antfu.me]{id=https://antfu.me/ img=https://github.com/antfu.png .rounded}. The design has been refined and its functionality expanded for greater flexibility.
 
 This live demo will guide you through setup and customization, offering helpful insights along the way. Enjoy exploring all the features this theme provides! ✨
@@ -30,9 +32,9 @@ This live demo will guide you through setup and customization, offering helpful 
 
 **User Experience**
 
-- Responsive Layout
-- Full-Platform TOC Support
-- Light & Dark Modes Toggle
+- 响应式布局
+- 全平台TOC支持
+- 明暗模式切换
 - Smooth View Transitions
 - Loading Progress Indicator
 - [Search Functionality](./blog/faqs-and-known-issues/#search-functionality)
@@ -76,7 +78,7 @@ This live demo will guide you through setup and customization, offering helpful 
 If you find this theme helpful, consider supporting the project maintainer or the style designer. Your support means more than you know. Thank you! ❤️
 
 <div class="flex flex-wrap gap-4">
-  <a class="btn-rose" href="https://github.com/sponsors/lin-stephanie">
+  <a class="btn-rose" href="./blog/faqs-and-known-issues/#search-functionality">
     <span class="i-ph-heart-duotone"></span> Support Stephanie Lin (Maintainer)</a>
   <a class="btn-yellow" href="https://github.com/sponsors/antfu">
     <span class="i-ph-lightning-duotone"></span> Support Anthony Fu (Designer)</a>
