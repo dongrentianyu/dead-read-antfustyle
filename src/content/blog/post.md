@@ -10,6 +10,8 @@ giscus: true
 search: true
 ---
 
+简单触发下测试
+
 This post explains how to create new posts in the [Astro AntfuStyle Theme](https://github.com/lin-stephanie/astro-antfustyle-theme) and provides guidelines, tips, and tricks for writing posts.
 
 ## Creating a New Post
