@@ -1,6 +1,6 @@
 ---
-title: Adding New Posts
-description: "How to create new posts in Astro AntfuStyle Theme: guidelines, tips, and tricks"
+title: 添加新帖子
+description: "如何在Astro AntfuStyle主题中创建新帖子：指南，提示和技巧"
 pubDate: 2023-12-06
 lastModDate: ''
 ogImage: true

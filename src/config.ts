@@ -27,6 +27,12 @@ export const UI: Ui = {
       text: 'Projects',
     },
     {
+      path: '/test',
+      title: 'Test',
+      displayMode: 'alwaysText',
+      text: 'Test',
+    },
+    {
       path: '/highlights',
       title: 'Highlights',
       displayMode: 'iconToTextOnMobile',
