@@ -1,0 +1,17 @@
+---
+import MyRenderArticle from '~/components/views/myAstro/MyRenderArticle.astro'
+import { getFilteredArticles } from '~/utils/data'
+
+export async function getStaticPaths() {
+  const article = await getFilteredArticles('article')
+
+  return article.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }))
+}
+
+const { article } = Astro.props
+---
+
+<MyRenderArticle {article} isCommentable={true} />

@@ -12,6 +12,7 @@ import {
   projectSchema,
   streamSchema,
   photoSchema,
+  articleSchema,
 } from '~/content/schema'
 
 const pages = defineCollection({
@@ -26,6 +27,12 @@ const home = defineCollection({
 const blog = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/[^_]*.{md,mdx}' }),
   schema: postSchema,
+})
+
+// 新增一个article的内容集合，方便后续处理
+const article = defineCollection({
+  loader: glob({ base: './src/content/article', pattern: '**/[^_]*.{md,mdx}' }),
+  schema: articleSchema,
 })
 
 const projects = defineCollection({
@@ -104,6 +111,7 @@ const feeds = defineCollection({
   }),
 })
 
+
 export const collections = {
   pages,
   home,
@@ -116,4 +124,5 @@ export const collections = {
   changelog,
   streams,
   feeds,
+  article,
 }

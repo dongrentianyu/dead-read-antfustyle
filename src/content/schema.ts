@@ -205,3 +205,132 @@ export const streamSchema = z.object({
 })
 
 export type StreamSchema = z.infer<typeof streamSchema>
+
+/* Article */
+export const articleSchema = z.object({
+  title: z
+    .string()
+    .max(60)
+    .describe(
+      "**Required**. Sets the post title, limited to **60 characters**. This follows Moz's recommendation, ensuring approximately 90% of titles display correctly in SERPs and preventing truncation on smaller screens or social platforms. [Learn more](https://moz.com/learn/seo/title-tag)."
+    ),
+  subtitle: z
+    .string()
+    .default('')
+    .describe(
+      'Provides a post subtitle. If provided, it will be displayed below the title. If not needed, leave the field as an empty string or delete it.'
+    ),
+  description: z
+    .string()
+    .default('')
+    .describe(
+      'Provides a brief description, used in meta tags for SEO and sharing purposes. If not needed, leave the field as an empty string or delete it, and the `SITE.description` will be used directly.'
+    ),
+  pubDate: z.coerce
+    .date()
+    .describe(
+      '**Required**. Specifies the publication date. See supported formats [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#examples).'
+    ),
+  lastModDate: z
+    .union([z.coerce.date(), z.literal('')])
+    .optional()
+    .describe(
+      'Tracks the last modified date. If not needed, leave the field as an empty string or delete it.'
+    ),
+  minutesRead: z
+    .number()
+    .optional()
+    .describe(
+      'Provides an estimated reading time in minutes. To auto-generate, delete the field; to hide it on the page, enter 0'
+    ),
+  radio: z
+    .boolean()
+    .default(false)
+    .describe(
+      'Indicates if the post includes audio content or links to an external audio source. If `true`, an icon will be added to the post item in the list.'
+    ),
+  video: z
+    .boolean()
+    .default(false)
+    .describe(
+      'Indicates if the post includes video content or links to an external video source. If `true`, an icon will be added to the post item in the list.'
+    ),
+  platform: z
+    .string()
+    .default('')
+    .describe(
+      'Specifies the platform where the audio or video content is published. If provided, the platform name will be displayed. If not needed, leave the field as an empty string or delete it.'
+    ),
+  ogImage: z
+    .union([z.string(), z.boolean()])
+    .default(true)
+    .describe(
+      'Specifies the Open Graph (OG) image for social media sharing. To auto-generate OG image, delete the field or set to `true`. To disable it, set the field to `false`. To use a custom image, provide the full filename from `/public/og-images/`.'
+    ),
+  toc: z
+    .boolean()
+    .default(true)
+    .describe(
+      'Controls whether the table of contents (TOC) is generated for the post.'
+    ),
+  share: z
+    .boolean()
+    .default(true)
+    .describe('Controls whether social sharing is available for the post.'),
+  giscus: z
+    .boolean()
+    .default(true)
+    .describe('Controls whether Giscus comments are available for the post.'),
+  search: z
+    .boolean()
+    .default(true)
+    .describe(
+      'Defines a URL to redirect the post. If not needed, delete the field or set to `false`'
+    ),
+  redirect: z
+    .string()
+    .url('Invalid url.')
+    .optional()
+    .describe('Defines a URL to redirect the post.'),
+  draft: z
+    .boolean()
+    .default(false)
+    .describe(
+      'Marks the post as a draft. If `true`, it is only visible in development and excluded from production builds.'
+    ),
+  // ✅ 新增：标签数组（可选，自动去重）
+  tags: z
+    .array(z.string())
+    .optional()
+    .default([])
+    .refine((items) => new Set(items).size === items.length, {
+      message: "Tags must not contain duplicates",
+    })
+    .describe(
+      'Optional array of tags for filtering and organization. Values should be unique and will be validated for duplicates.'
+    ),
+  // ✅ 新增：分类数组（可选，自动去重）
+  category: z
+    .array(z.string())
+    .optional()
+    .default([])
+    .refine((items) => new Set(items).size === items.length, {
+      message: "Categories must not contain duplicates",
+    })
+    .describe(
+      'Optional array of categories for filtering and organization. Values should be unique and will be validated for duplicates.'
+    ),
+  // ✅ 新增：issue 字段（可选，4位数字格式验证）
+  issue: z
+    .string()
+    .regex(/^\d{4}$/, "Issue must be a 4-digit string (e.g., 0001, 0010, 0100, 9999)")
+    .optional()
+    .describe(
+      "Optional issue number in 0001 format. Must be exactly 4 digits with leading zeros if needed (e.g., 0001, 0012, 0123, 1234)."
+    ),
+})
+
+export type ArticleSchema = z.infer<typeof articleSchema>
+
+
+

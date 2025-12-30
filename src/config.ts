@@ -27,10 +27,10 @@ export const UI: Ui = {
       text: 'Projects',
     },
     {
-      path: '/test',
-      title: 'Test',
+      path: '/article',
+      title: 'Article',
       displayMode: 'alwaysText',
-      text: 'Test',
+      text: 'Article',
     },
     {
       path: '/highlights',

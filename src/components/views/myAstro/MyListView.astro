@@ -1,0 +1,103 @@
+---
+import { render } from 'astro:content'
+
+import Categorizer from '~/components/base/Categorizer.astro'
+import ListItem from '~/components/views/ListItem.astro'
+import Toc from '~/components/toc/Toc.astro'
+import Warning from '~/components/base/Warning.astro'
+
+import { FEATURES } from '~/config'
+import { isSameYear, getYear } from '~/utils/datetime'
+import { getFilteredArticles, getSortedArticles } from '~/utils/data'
+
+import type { CollectionEntry, CollectionKey } from 'astro:content'
+
+interface Props {
+  collectionType: CollectionKey
+  pageToc: boolean
+}
+
+const { collectionType, pageToc } = Astro.props
+
+const VALID_COLLECTION_TYPE = [
+  'blog',
+  'changelog',
+  'streams',
+  'feeds',
+  'article',
+]
+const WARNING = `The '${collectionType}' collection type is not built-in.
+  Modify <code>ListView.astro</code> to render it.`
+
+/* Toc */
+const { toc } = FEATURES
+const tocEnabled = Array.isArray(toc) && toc[0] && pageToc
+let years: string[] = []
+
+/* Articles */
+let sortedArticleItems: CollectionEntry<'article'>[] = []
+if (collectionType === 'article') {
+  const articleItems = await getFilteredArticles(collectionType)
+  sortedArticleItems = getSortedArticles(articleItems)
+
+  if (tocEnabled) {
+    const yearsSet = new Set<number>()
+    sortedArticleItems.forEach((item) => {
+      const year = getYear(item.data.pubDate)
+      yearsSet.add(year)
+    })
+
+    years = Array.from(yearsSet)
+      .sort((a, b) => b - a)
+      .map((year) => year.toString())
+  }
+}
+---
+
+{tocEnabled && <Toc anchors={years} />}
+
+{
+  collectionType === 'article' && (
+    <div aria-label="Post list">
+      {sortedArticleItems.length === 0 ? (
+        <div class="py-2 op-50">nothing here yet</div>
+      ) : (
+        sortedArticleItems.map(async (item, idx) => {
+          const { data, id } = item
+          const { remarkPluginFrontmatter } = await render(item)
+          const minutesRead =
+            data.minutesRead || remarkPluginFrontmatter.minutesRead
+
+          return (
+            <>
+              {!isSameYear(
+                data.pubDate,
+                sortedArticleItems[idx - 1]?.data.pubDate
+              ) && (
+                <Categorizer
+                  {idx}
+                  needId={tocEnabled}
+                  text={getYear(data.pubDate).toString()}
+                />
+              )}
+              <ListItem
+                {idx}
+                {collectionType}
+                redirect={data.redirect}
+                postSlug={id}
+                title={data.title}
+                video={data.video}
+                radio={data.radio}
+                date={data.pubDate}
+                {minutesRead}
+                platform={data.platform}
+              />
+            </>
+          )
+        })
+      )}
+    </div>
+  )
+}
+
+{!VALID_COLLECTION_TYPE.includes(collectionType) && <Warning html={WARNING} />}

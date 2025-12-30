@@ -49,10 +49,32 @@ export async function getFilteredPosts(collection: 'blog' | 'changelog') {
 }
 
 /**
+ * Retrieves filtered Articles from the specified content collection.
+ * In production, it filters out draft posts.
+ */
+
+export async function getFilteredArticles(collection: 'article') {
+  return await getCollection(collection, ({ data }) => {
+    return import.meta.env.PROD ? !data.draft : true
+  })
+}
+
+/**
  * Sorts an array of posts by their publication date in descending order.
  */
 export function getSortedPosts(
   posts: CollectionEntryList<'blog' | 'changelog'>
+) {
+  return posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  )
+}
+
+/**
+ * Sorts an array of Articles by their publication date in descending order.
+ */
+export function getSortedArticles(
+  posts: CollectionEntryList<'article'>
 ) {
   return posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
