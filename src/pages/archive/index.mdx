@@ -1,0 +1,23 @@
+---
+title: Archive
+subtitle: ''
+description: 归档项目
+bgType: false
+toc: false
+ogImage: false
+---
+
+import BaseLayout from '~/layouts/BaseLayout.astro'
+import TabbedLayout from '~/layouts/TabbedLayout.astro'
+import MyListView from '~/components/views/myAstro/MyListView.astro'
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  bgType={frontmatter.bgType}
+  ogImage={frontmatter.ogImage}
+>
+  <TabbedLayout subtitle={frontmatter.subtitle}>
+    <MyListView collectionType="article" pageToc={frontmatter.toc} />
+  </TabbedLayout>
+</BaseLayout>

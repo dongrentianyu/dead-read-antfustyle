@@ -21,16 +21,16 @@ export const UI: Ui = {
       text: 'Blog',
     },
     {
-      path: '/projects',
-      title: 'Projects',
-      displayMode: 'alwaysText',
-      text: 'Projects',
-    },
-    {
       path: '/article',
       title: 'Article',
       displayMode: 'alwaysText',
       text: 'Article',
+    },
+    {
+      path: '/archive',
+      title: 'Archive',
+      displayMode: 'alwaysText',
+      text: 'Archive',
     },
     {
       path: '/highlights',
@@ -84,7 +84,7 @@ export const UI: Ui = {
   },
   tabbedLayoutTabs: [
     { title: 'Changelog', path: '/changelog' },
-    { title: 'AstroBlog', path: '/feeds' },
+    { title: 'Feeds', path: '/feeds' },
     { title: 'AstroStreams', path: '/streams' },
   ],
   groupView: {
