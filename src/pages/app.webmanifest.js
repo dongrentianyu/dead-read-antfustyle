@@ -4,10 +4,9 @@ export async function GET() {
   // https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest
   const manifest = {
     id: withBasePath('/'),
-    name: 'Astro AntfuStyle Theme',
-    short_name: 'AntfuStyle',
-    description:
-      'A customizable, feature-rich Astro theme for blog and portfolio',
+    name: 'Dead Paper,Dead Read',
+    short_name: 'Dead Paper',
+    description: 'Dead Paper,Dead Read,Everything was Dead',
     icons: [
       {
         src: withBasePath('icon-192.png'),
