@@ -86,6 +86,7 @@ export const UI: Ui = {
     { title: 'Changelog', path: '/changelog' },
     { title: 'Feeds', path: '/feeds' },
     { title: 'AstroStreams', path: '/streams' },
+    { title: 'Article', path: '/article' },
   ],
   groupView: {
     maxGroupColumns: 3,
